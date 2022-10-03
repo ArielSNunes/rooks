@@ -1,0 +1,32 @@
+{
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "typecheck": {
+      "outputs": []
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    },
+    "coverage": {
+      "dependsOn": ["rooks#build"],
+      "cache": false,
+      "outputs": ["src/coverage/**"]
+    },
+    "test": {
+      "cache": false,
+      "dependsOn": ["rooks#build"],
+      "outputs": ["coverage/**", "dist/**", ".next/**"]
+    },
+    "start": {
+      "cache": false,
+      "dependsOn": ["build"],
+      "outputs": ["dist/**", ".next/**"]
+    }
+  }
+}
